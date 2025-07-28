@@ -4,7 +4,7 @@
 #include "utils/consts.h"
 #include <stdbool.h>
 
-typedef struct vec3 {
+typedef union vec3 {
     struct {
         nml_t x;
         nml_t y;

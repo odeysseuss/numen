@@ -50,6 +50,9 @@ int Vec2Sub(Vec2 *vec1, Vec2 *vec2, Vec2 *vOut) {
 }
 
 int Vec2Mul(Vec2 *vec1, Vec2 *vec2, Vec2 *vOut) {
+    if (fabs(vec2->x) < kEPSILON || fabs(vec2->y) < kEPSILON)
+        return NML_EZERODIV;
+
     vOut->x = vec1->x * vec2->x;
     vOut->y = vec1->y * vec2->y;
     return NML_SUCCESS;
@@ -106,7 +109,7 @@ int Vec2Reflect(Vec2 *vec1, Vec2 *vec2, Vec2 *vOut) {
         return NML_EZERODIV;
 
     nml_t scaler = 2.0 * Vec2Dot(vec1, vec2) / lenSqr;
-    vOut->x = scaler * vec2->x - vec1->x;
-    vOut->y = scaler * vec2->y - vec1->y;
+    vOut->x = vec1->x - scaler * vec2->x;
+    vOut->y = vec1->y - scaler * vec2->y;
     return NML_SUCCESS;
 }

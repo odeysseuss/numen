@@ -64,6 +64,11 @@ int Vec3Mul(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
 }
 
 int Vec3Div(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
+    if (fabs(vec2->x) < kEPSILON || fabs(vec2->y) < kEPSILON ||
+        fabs(vec2->z) < kEPSILON) {
+        return NML_EZERODIV;
+    }
+
     vOut->x = vec1->x / vec2->x;
     vOut->y = vec1->y / vec2->y;
     vOut->z = vec1->z / vec2->z;
@@ -110,14 +115,14 @@ int Vec3Reject(Vec3 *vec1, Vec3 *vec3, Vec3 *vOut) {
     return NML_SUCCESS;
 }
 
-int Vec3Reflect(Vec3 *vec1, Vec3 *vec3, Vec3 *vOut) {
-    nml_t lenSqr = Vec3LengthSqr(vec3);
+int Vec3Reflect(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
+    nml_t lenSqr = Vec3LengthSqr(vec2);
     if (lenSqr < kEPSILON)
         return NML_EZERODIV;
 
-    nml_t scaler = 3.0 * Vec3Dot(vec1, vec3) / lenSqr;
-    vOut->x = scaler * vec3->x - vec1->x;
-    vOut->y = scaler * vec3->y - vec1->y;
-    vOut->z = scaler * vec3->z - vec1->z;
+    nml_t scaler = 2.0 * Vec3Dot(vec1, vec2) / lenSqr;
+    vOut->x = vec1->x - scaler * vec2->x;
+    vOut->y = vec1->y - scaler * vec2->y;
+    vOut->z = vec1->z - scaler * vec2->z;
     return NML_SUCCESS;
 }

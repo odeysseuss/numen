@@ -16,7 +16,6 @@ include(build_numen)
 include(build_tests)
 include(install_numen)
 
-# option to control whether to build tests
 option(BUILD_TESTS "Build test executables" ON)
 if(BUILD_TESTS)
     add_subdirectory(tests)
