@@ -36,7 +36,7 @@ nml_t RadsToDegs(nml_t n) {
     return n * k180_PI;
 }
 
-nml_t Sqrt(nml_t n) {
+nml_t Q_Sqrt(nml_t n) {
     if (n < 0)
         return NML_EINVAL;
     // determine floating-point properties at compile time
@@ -65,7 +65,7 @@ nml_t Sqrt(nml_t n) {
     return n * x;
 }
 
-nml_t RSqrt(nml_t n) {
+nml_t Q_RSqrt(nml_t n) {
     if (n < 0)
         return NML_EINVAL;
     // determine floating-point properties at compile time
@@ -99,7 +99,7 @@ nml_t Factorial(nml_t n) {
         if (n <= 20) {
             return LUT_FACTORIAL[(uint8_t)n];
         } else {
-            const nml_t term1 = Sqrt(k2PI * n);
+            const nml_t term1 = Q_Sqrt(k2PI * n);
             const nml_t term2 = PowUInt((n / kE), n);
             const nml_t corr_factor = 1.0 + (1.0 / (12 * n)) +
                                       (1.0 / (288 * n * n)) -
