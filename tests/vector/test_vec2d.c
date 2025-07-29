@@ -1,7 +1,6 @@
 #include "nutest.h"
 #include "vector/vec2d.h"
 #include "utils/errors.h"
-#include <math.h>
 
 // helper function to compare two Vec2s with a tolerance
 bool Vec2Near(const Vec2 *a, const Vec2 *b, float tolerance) {

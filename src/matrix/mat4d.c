@@ -13,8 +13,9 @@ int Mat4InitZero(Mat4 *mOut) {
 }
 
 int Mat4Diagonal(nml_t val, Mat4 *mOut) {
-    for (int i = 0; i < 16; i++) {
-        mOut->Elements[i] = val;
+    memset(mOut->Elements, 0, sizeof(Mat4));
+    for (int i = 0; i < 4; i++) {
+        mOut->Elements[i * 4 + i] = val;
     }
 
     return NML_SUCCESS;

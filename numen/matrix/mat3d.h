@@ -20,6 +20,6 @@ int Mat3Sub(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
 int Mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
 
 int Mat3Scale(Mat3 *mat, nml_t s, Mat3 *mOut);
-int Mat2Negate(Mat3 *mat, Mat3 *mOut);
+int Mat3Negate(Mat3 *mat, Mat3 *mOut);
 
 #endif // !__MAT3D_H__

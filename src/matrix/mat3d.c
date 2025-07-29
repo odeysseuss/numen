@@ -13,8 +13,9 @@ int Mat3InitZero(Mat3 *mOut) {
 }
 
 int Mat3Diagonal(nml_t val, Mat3 *mOut) {
-    for (int i = 0; i < 9; i++) {
-        mOut->Elements[i] = val;
+    memset(mOut->Elements, 0, sizeof(Mat3));
+    for (int i = 0; i < 3; i++) {
+        mOut->Elements[i * 3 + i] = val;
     }
 
     return NML_SUCCESS;

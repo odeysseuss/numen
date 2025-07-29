@@ -13,8 +13,9 @@ int Mat2InitZero(Mat2 *mOut) {
 }
 
 int Mat2Diagonal(nml_t val, Mat2 *mOut) {
-    for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = val;
+    memset(mOut->Elements, 0, sizeof(Mat2));
+    for (int i = 0; i < 2; i++) {
+        mOut->Elements[i * 2 + i] = val;
     }
 
     return NML_SUCCESS;

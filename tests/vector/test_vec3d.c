@@ -1,7 +1,6 @@
 #include "nutest.h"
 #include "vector/vec3d.h"
 #include "utils/errors.h"
-#include <math.h>
 
 // helper function to compare two Vec3s with a tolerance
 bool Vec3Near(const Vec3 *a, const Vec3 *b, float tolerance) {
