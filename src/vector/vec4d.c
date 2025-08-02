@@ -109,7 +109,7 @@ int Vec4Project(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut) {
     vOut->x = vec2->x * scaler;
     vOut->y = vec2->y * scaler;
     vOut->z = vec2->z * scaler;
-    vOut->z = vec2->w * scaler;
+    vOut->w = vec2->w * scaler;
     return NML_SUCCESS;
 }
 

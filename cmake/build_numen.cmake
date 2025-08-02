@@ -2,7 +2,11 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-Wall -Wextra -pedantic -pipe -g -O2 -D_FORTIFY_SOURCE=2 -fstack-protector-all)
+    add_compile_options(-Wall -Wextra -pedantic -pipe)
+    # add_compile_options("$<$<CONFIG:Debug>:-g3;-Og;-fsanitize=address,undefined>")
+    add_compile_options("$<$<CONFIG:Debug>:-g3;-Og>")
+    add_compile_options("$<$<CONFIG:Release>:-O3;-D_FORTIFY_SOURCE=2;-fstack-protector-strong;-fPIE>")
+    add_link_options("$<$<CONFIG:Release>:-pie;-Wl,-z,now,-z,relro>")
 endif()
 
 file(GLOB_RECURSE LIB_SOURCES "src/*.c")

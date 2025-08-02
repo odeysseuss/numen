@@ -243,18 +243,28 @@ static TestRegistry test_registry = {NULL, 0};
 // Skip test macro
 #define SKIP() return TEST_SKIP
 
-// Performance measurement macros
-#define BENCHMARK_START()                     \
-    struct timespec _bench_start, _bench_end; \
-    clock_gettime(CLOCK_MONOTONIC, &_bench_start)
+// Benchmarking macros
+#define BENCHMARK_START(name)                               \
+    struct timespec _bench_start_##name, _bench_end_##name; \
+    clock_gettime(CLOCK_MONOTONIC, &_bench_start_##name)
 
-#define BENCHMARK_END(name)                                                 \
-    clock_gettime(CLOCK_MONOTONIC, &_bench_end);                            \
-    double _bench_time = (_bench_end.tv_sec - _bench_start.tv_sec) +        \
-                         (_bench_end.tv_nsec - _bench_start.tv_nsec) / 1e9; \
-    printf("[ " COLOR_CYAN "BENCH" COLOR_RESET "   ] %s: %.9f seconds\n",   \
-           name,                                                            \
-           _bench_time)
+#define BENCHMARK_END(name)                                               \
+    clock_gettime(CLOCK_MONOTONIC, &_bench_end_##name);                   \
+    double _bench_time_##name =                                           \
+        (_bench_end_##name.tv_sec - _bench_start_##name.tv_sec) +         \
+        (_bench_end_##name.tv_nsec - _bench_start_##name.tv_nsec) / 1e9;  \
+    printf("[ " COLOR_CYAN "BENCH" COLOR_RESET "   ] %s: %.9f seconds\n", \
+           #name,                                                         \
+           _bench_time_##name)
+
+#define BENCHMARK_FUNCTION(func, name, iterations)           \
+    do {                                                     \
+        BENCHMARK_START(name);                               \
+        for (int _iter = 0; _iter < (iterations); _iter++) { \
+            func;                                            \
+        }                                                    \
+        BENCHMARK_END(name);                                 \
+    } while (0)
 
 // Test registration function
 static void register_test_case(TestCase *test_case) {
