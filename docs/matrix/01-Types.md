@@ -23,6 +23,3 @@ typedef union {
     Vec4 Columns[4];
 } Mat4;
 ```
-
-- `Elements:` Provides row-major access
-- `Columns :` Peovides column-major access

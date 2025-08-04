@@ -69,3 +69,19 @@ int Mat2Negate(Mat2 *mat, Mat2 *mOut) {
 
     return NML_SUCCESS;
 }
+
+int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
+    vOut->x = vec->Elements[0] * mat->Columns[0].x +
+              vec->Elements[1] * mat->Columns[1].x;
+    vOut->y = vec->Elements[0] * mat->Columns[0].y +
+              vec->Elements[1] * mat->Columns[1].y;
+
+    return NML_SUCCESS;
+}
+
+int Mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+    Mat2MulVec2(mat1, &mat2->Columns[0], &mOut->Columns[0]);
+    Mat2MulVec2(mat1, &mat2->Columns[1], &mOut->Columns[1]);
+
+    return NML_SUCCESS;
+}

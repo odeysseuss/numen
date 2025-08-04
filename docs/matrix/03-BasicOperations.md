@@ -109,7 +109,7 @@ int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 
 - ***Example***
 ```c
-nml_t data1[4] = { 1, 2, 3, 4 };
+nml_t data1[4] = { 1, 3, 2, 4 };
 nml_t data2[4] = { 2, 2, 2, 2 };
 Mat2 A;
 Mat2Init(data1, &A);
@@ -197,7 +197,7 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut);
 
 - ***Example***
 ```c
-nml_t arr[4] = { 1, 2, 3, 4 };
+nml_t arr[4] = { 1, 3, 2, 4 };
 Mat2 A;
 Mat2Init(arr, &A);
 Mat2 result;

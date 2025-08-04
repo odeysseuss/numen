@@ -69,3 +69,34 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut) {
 
     return NML_SUCCESS;
 }
+
+int Mat4MulVec4(Mat4 *mat, Vec4 *vec, Vec4 *vOut) {
+    vOut->x = vec->Elements[0] * mat->Columns[0].x +
+              vec->Elements[1] * mat->Columns[1].x +
+              vec->Elements[2] * mat->Columns[2].x +
+              vec->Elements[3] * mat->Columns[3].x;
+    vOut->y = vec->Elements[0] * mat->Columns[0].y +
+              vec->Elements[1] * mat->Columns[1].y +
+              vec->Elements[2] * mat->Columns[2].y +
+              vec->Elements[3] * mat->Columns[3].y;
+    vOut->z = vec->Elements[0] * mat->Columns[0].z +
+              vec->Elements[1] * mat->Columns[1].z +
+              vec->Elements[2] * mat->Columns[2].z +
+              vec->Elements[3] * mat->Columns[3].z;
+
+    vOut->w = vec->Elements[0] * mat->Columns[0].w +
+              vec->Elements[1] * mat->Columns[1].w +
+              vec->Elements[2] * mat->Columns[2].w +
+              vec->Elements[3] * mat->Columns[3].w;
+
+    return NML_SUCCESS;
+}
+
+int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut) {
+    Mat4MulVec4(mat1, &mat2->Columns[0], &mOut->Columns[0]);
+    Mat4MulVec4(mat1, &mat2->Columns[1], &mOut->Columns[1]);
+    Mat4MulVec4(mat1, &mat2->Columns[2], &mOut->Columns[2]);
+    Mat4MulVec4(mat1, &mat2->Columns[3], &mOut->Columns[3]);
+
+    return NML_SUCCESS;
+}

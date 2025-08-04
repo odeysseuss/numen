@@ -1,11 +1,11 @@
 ## Initialization Functions
 
-#### Initialize from a 2d Array (Row-Major)
+#### Initialize from a 2d Array (Column-Major)
 - ***Reference***
 ```c
-int Mat2Init(const nml_t arr[2][2], Mat2 *mOut);
-int Mat3Init(const nml_t arr[3][3], Mat3 *mOut);
-int Mat4Init(const nml_t arr[4][4], Mat4 *mOut);
+int Mat2Init(const nml_t arr[4], Mat2 *mOut);
+int Mat3Init(const nml_t arr[9], Mat3 *mOut);
+int Mat4Init(const nml_t arr[16], Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -20,8 +20,8 @@ int Mat4Init(const nml_t arr[4][4], Mat4 *mOut);
 
 - ***Example***
 ```c
-nml_t array[4] = { 1.0f, 2.0f,
-                  3.0f, 4.0f };
+nml_t array[4] = { 1.0, 3,0
+                   2.0, 4.0 };
 Mat2 A;
 Mat2Init(array, &A);
 ```

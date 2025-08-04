@@ -17,10 +17,13 @@ int Mat4Identity(Mat4 *mOut);
 int Mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 // subtract mat2 form mat1
 int Mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
-int Mat4Div(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
-int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 
 int Mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
 int Mat4Negate(Mat4 *mat, Mat4 *mOut);
+
+// matrix multiplication
+int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
+int Mat4MulVec4(Mat4 *mat, Vec4 *vec, Vec4 *vOut);
+int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 
 #endif // !__MAT4D_H__

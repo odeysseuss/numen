@@ -4,12 +4,9 @@
 #include "utils/consts.h"
 #include <stdbool.h>
 
-typedef union NM_Vec4 {
+typedef union Vec4 {
     struct {
-        nml_t x;
-        nml_t y;
-        nml_t z;
-        nml_t w;
+        nml_t x, y, z, w;
     };
     nml_t Elements[4];
 } Vec4;

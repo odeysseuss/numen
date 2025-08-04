@@ -6,8 +6,7 @@
 
 typedef union Vec2 {
     struct {
-        nml_t x;
-        nml_t y;
+        nml_t x, y;
     };
     nml_t Elements[2];
 } Vec2;

@@ -17,9 +17,13 @@ int Mat3Identity(Mat3 *mOut);
 int Mat3Add(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
 // subtract mat2 form mat1
 int Mat3Sub(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
 
 int Mat3Scale(Mat3 *mat, nml_t s, Mat3 *mOut);
 int Mat3Negate(Mat3 *mat, Mat3 *mOut);
+
+// matrix multiplication
+int Mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
+int Mat3MulVec3(Mat3 *mat, Vec3 *vec, Vec3 *vOut);
+int Mat3MulMat3(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
 
 #endif // !__MAT3D_H__
