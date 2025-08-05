@@ -12,6 +12,17 @@ enum {
     NML_ENAN = 6,     // (0.0/0.0)
     NML_EOVRFLW = 7,  // overflow
     NML_EUNDRFLW = 8, // underflow
+    NML_ENULLMEM = 9, // null pointer
 };
+
+#define NULL_POINTERS(...)                                        \
+    do {                                                          \
+        void *_pointers[] = {__VA_ARGS__};                        \
+        size_t _count = sizeof(_pointers) / sizeof(_pointers[0]); \
+        for (size_t _i = 0; _i < _count; _i++) {                  \
+            if (_pointers[_i] == NULL)                            \
+                return NML_ENULLMEM;                              \
+        }                                                         \
+    } while (0)
 
 #endif // !__NML_ERRNO_H__

@@ -3,16 +3,19 @@
 #include <string.h>
 
 int Mat2Init(const nml_t arr[4], Mat2 *mOut) {
+    NULL_POINTERS(mOut);
     memcpy(mOut->Elements, arr, sizeof(nml_t) * 4);
     return NML_SUCCESS;
 }
 
 int Mat2InitZero(Mat2 *mOut) {
+    NULL_POINTERS(mOut);
     memset(mOut, 0, sizeof(Mat2));
     return NML_SUCCESS;
 }
 
 int Mat2Diagonal(nml_t val, Mat2 *mOut) {
+    NULL_POINTERS(mOut);
     memset(mOut->Elements, 0, sizeof(Mat2));
     for (int i = 0; i < 2; i++) {
         mOut->Elements[i * 2 + i] = val;
@@ -22,6 +25,7 @@ int Mat2Diagonal(nml_t val, Mat2 *mOut) {
 }
 
 int Mat2Identity(Mat2 *mOut) {
+    NULL_POINTERS(mOut);
     memset(mOut->Elements, 0, sizeof(Mat2));
     for (int i = 0; i < 2; i++) {
         mOut->Elements[i * 2 + i] = 1.0;
@@ -31,6 +35,7 @@ int Mat2Identity(Mat2 *mOut) {
 }
 
 int Mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+    NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
         mOut->Elements[i] = mat1->Elements[i] + mat2->Elements[i];
     }
@@ -39,6 +44,7 @@ int Mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
 }
 
 int Mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+    NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
         mOut->Elements[i] = mat1->Elements[i] - mat2->Elements[i];
     }
@@ -47,6 +53,7 @@ int Mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
 }
 
 int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+    NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
         mOut->Elements[i] = mat1->Elements[i] * mat2->Elements[i];
     }
@@ -55,6 +62,7 @@ int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
 }
 
 int Mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut) {
+    NULL_POINTERS(mat, mOut);
     for (int i = 0; i < 4; i++) {
         mOut->Elements[i] = mat->Elements[i] * s;
     }
@@ -63,6 +71,7 @@ int Mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut) {
 }
 
 int Mat2Negate(Mat2 *mat, Mat2 *mOut) {
+    NULL_POINTERS(mat, mOut);
     for (int i = 0; i < 4; i++) {
         mOut->Elements[i] = -mat->Elements[i];
     }
@@ -71,6 +80,7 @@ int Mat2Negate(Mat2 *mat, Mat2 *mOut) {
 }
 
 int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
+    NULL_POINTERS(mat, vec, vOut);
     vOut->x = vec->Elements[0] * mat->Columns[0].x +
               vec->Elements[1] * mat->Columns[1].x;
     vOut->y = vec->Elements[0] * mat->Columns[0].y +
@@ -80,6 +90,7 @@ int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
 }
 
 int Mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+    NULL_POINTERS(mat1, mat2, mOut);
     Mat2MulVec2(mat1, &mat2->Columns[0], &mOut->Columns[0]);
     Mat2MulVec2(mat1, &mat2->Columns[1], &mOut->Columns[1]);
 

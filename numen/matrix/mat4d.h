@@ -7,7 +7,7 @@
 typedef union Mat4 {
     nml_t Elements[16];
     Vec4 Columns[4];
-} Mat4;
+} Mat4 __attribute__((aligned(16)));
 
 int Mat4Init(const nml_t arr[16], Mat4 *mOut);
 int Mat4InitZero(Mat4 *mOut);
