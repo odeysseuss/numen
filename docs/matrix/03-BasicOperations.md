@@ -18,27 +18,28 @@ int Mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 
 - ***Example***
 ```c
-Mat2 A;
-Mat2Identity(&A);
-Mat2 B;
-Mat2Diagonal(2.0, &B);
-Mat2 result;
-Mat2Add(&A, &B, &result);
+Mat2 mat1, mat2, result;
+Mat2Identity(&mat1);
+Mat2Diagonal(2.0, &mat2);
+Mat2Add(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
 ```math
-\text{A} = \begin{bmatrix}
-1 & 0 \\
-0 & 1
-\end{bmatrix}, \quad
-\text{B} = \begin{bmatrix}
-2 & 0 \\
-0 & 2
-\end{bmatrix}
+\text{mat1}+\text{mat2}=\text{result}
 ```
 ```math
-\text{result} = \begin{bmatrix}
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix} \quad
+\text{+} \quad
+\begin{bmatrix}
+2 & 0 \\
+0 & 2
+\end{bmatrix} \quad
+\text{=} \quad
+\begin{bmatrix}
 3 & 0 \\
 0 & 3
 \end{bmatrix}
@@ -62,78 +63,33 @@ int Mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 
 - ***Example***
 ```c
-Mat3 A;
-Mat3Diagonal(5.0, &A);
-Mat3 B;
-Mat3Identity(&B);
-Mat3 result;
-Mat3Sub(&A, &B, &result);
+Mat3 mat1, mat2, result;
+Mat3Diagonal(5.0, &mat1);
+Mat3Identity(&mat2);
+Mat3Sub(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
 ```math
-\text{A} = \begin{bmatrix}
+\text{mat1}-\text{mat2}=\text{result}
+```
+```math
+\begin{bmatrix}
 5 & 0 & 0 \\
 0 & 5 & 0 \\
 0 & 0 & 5
-\end{bmatrix}, \quad
-\text{B} = \begin{bmatrix}
+\end{bmatrix} \quad
+\text{-} \quad
+\begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{bmatrix}
-```
-```math
-\text{result} = \begin{bmatrix}
+\end{bmatrix} \quad
+\text{=} \quad
+\begin{bmatrix}
 4 & 0 & 0 \\
 0 & 4 & 0 \\
 0 & 0 & 4
-\end{bmatrix}
-```
-
-#### Hadamard Product (Element-wise Multiplication)
-- ***Reference***
-```c
-int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
-```
-
-- ***Parameters***
-    - `mat1`: First matrix operand
-    - `mat2`: Second matrix operand
-    - `mOut`: Output pointer
-
-- ***Return Value***
-    - *A new matrix that is the result of element-wise multiplication of mat1 and mat2*
-
-- ***Example***
-```c
-nml_t data1[4] = { 1, 3, 2, 4 };
-nml_t data2[4] = { 2, 2, 2, 2 };
-Mat2 A;
-Mat2Init(data1, &A);
-Mat2 B;
-Mat2Init(data2, &B);
-Mat2 result;
-Mat2Hadamard(&A, &B, &result);
-```
-
-- ***Representation***
-```math
-\text{A} = \begin{bmatrix}
-1 & 2 \\
-3 & 4
-\end{bmatrix}, \quad
-\text{B} = \begin{bmatrix}
-2 & 2 \\
-2 & 2
-\end{bmatrix}
-```
-```math
-\text{result} = \begin{bmatrix}
-2 & 4 \\
-6 & 8
 \end{bmatrix}
 ```
 
@@ -155,23 +111,25 @@ int Mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
 
 - ***Example***
 ```c
-Mat4 A;
-Mat4Identity(&A);
-Mat4 scaled;
-Mat4Scale(a, 3.0, &scaled);
+Mat4 mat, scaled;
+Mat4Identity(&mat);
+Mat4Scale(mat, 3.0, &scaled);
 ```
 
 - ***Representation***
 ```math
-\text{A} = \begin{bmatrix}
+\text{s}\cdot\text{mat}=\text{result}
+```
+```math
+\text{3.0} \quad \cdot \quad
+\begin{bmatrix}
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
-\end{bmatrix}
-```
-```math
-\text{scaled} = \begin{bmatrix}
+\end{bmatrix} \quad
+\text{=} \quad
+\begin{bmatrix}
 3 & 0 & 0 & 0 \\
 0 & 3 & 0 & 0 \\
 0 & 0 & 3 & 0 \\
@@ -198,21 +156,23 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut);
 - ***Example***
 ```c
 nml_t arr[4] = { 1, 3, 2, 4 };
-Mat2 A;
-Mat2Init(arr, &A);
-Mat2 result;
-Mat2Negate(&A, &result);
+Mat2 mat, result;
+Mat2Init(arr, &mat);
+Mat2Negate(&mat, &result);
 ```
 
 - ***Representation***
 ```math
-\text{A} = \begin{bmatrix}
+\text{-} \text{mat} \quad = \quad \text{result}
+```
+```math
+\text{-}
+\begin{bmatrix}
 1 & 2 \\
 3 & 4
 \end{bmatrix} \quad
-```
-```math
-\text{result} = \begin{bmatrix}
+\text{=} \quad
+\begin{bmatrix}
 -1 & -2 \\
 -3 & -4
 \end{bmatrix} \quad

@@ -1,6 +1,5 @@
 #include "matrix/mat4d.h"
 #include "utils/errors.h"
-#include "utils/simd.h"
 #include <string.h>
 
 int Mat4Init(const nml_t arr[16], Mat4 *mOut) {
@@ -197,10 +196,10 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut) {
 #elif defined(USE_SIMD__SSE)
     __m128 sign_mask = _mm_set1_ps(-0.0f);
 
-    __m128 col0 = _mm_xor_ps(_mm_load_ps(&mat->Elements[0], sign_mask);
-    __m128 col1 = _mm_xor_ps(_mm_load_ps(&mat->Elements[4], sign_mask);
-    __m128 col2 = _mm_xor_ps(_mm_load_ps(&mat->Elements[8], sign_mask);
-    __m128 col3 = _mm_xor_ps(_mm_load_ps(&mat->Elements[12], sign_mask);
+    __m128 col0 = _mm_xor_ps(_mm_load_ps(&mat->Elements[0]), sign_mask);
+    __m128 col1 = _mm_xor_ps(_mm_load_ps(&mat->Elements[4]), sign_mask);
+    __m128 col2 = _mm_xor_ps(_mm_load_ps(&mat->Elements[8]), sign_mask);
+    __m128 col3 = _mm_xor_ps(_mm_load_ps(&mat->Elements[12]), sign_mask);
 
     _mm_store_ps(&mOut->Elements[0], col0);
     _mm_store_ps(&mOut->Elements[4], col1);
@@ -279,7 +278,7 @@ int Mat4MulVec4(Mat4 *mat, Vec4 *vec, Vec4 *vOut) {
 
     return NML_SUCCESS;
 
-#elif defined(USE_SIMD_SSE)
+#elif defined(USE_SIMD__SSE)
     __m128 v = _mm_load_ps(vec->Elements);
 
     __m128 res = _mm_mul_ps(_mm_load_ps(mat->Columns[0].Elements),
