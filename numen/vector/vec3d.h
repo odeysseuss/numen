@@ -6,7 +6,7 @@
 
 typedef union Vec3 {
     struct {
-        nml_t x, y, z;
+        nml_t X, Y, Z;
     };
     nml_t Elements[3];
 } Vec3;
@@ -44,7 +44,7 @@ int Vec3Reflect(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut);
  */
 
 static inline bool Vec3IsZero(Vec3 *vec) {
-    return (vec->x * vec->x + vec->y * vec->y + vec->z * vec->z) <
+    return (vec->X * vec->X + vec->Y * vec->Y + vec->Z * vec->Z) <
            (kEPSILON * kEPSILON);
 }
 

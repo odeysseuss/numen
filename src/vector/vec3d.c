@@ -3,9 +3,9 @@
 #include "utils/errors.h"
 
 int Vec3Init(nml_t x, nml_t y, nml_t z, Vec3 *vOut) {
-    vOut->x = x;
-    vOut->y = y;
-    vOut->z = z;
+    vOut->X = x;
+    vOut->Y = y;
+    vOut->Z = z;
     return NML_SUCCESS;
 }
 
@@ -14,78 +14,78 @@ int Vec3InitZero(Vec3 *vOut) {
 }
 
 nml_t Vec3Length(Vec3 *vec) {
-    return sqrt(Sqr(vec->x) + Sqr(vec->y) + Sqr(vec->z));
+    return sqrt(Sqr(vec->X) + Sqr(vec->Y) + Sqr(vec->Z));
 }
 
 nml_t Vec3LengthSqr(Vec3 *vec) {
-    return Sqr(vec->x) + Sqr(vec->y) + Sqr(vec->z);
+    return Sqr(vec->X) + Sqr(vec->Y) + Sqr(vec->Z);
 }
 
 int Vec3Normalize(Vec3 *vec, Vec3 *vOut) {
     if (Vec3IsZero(vec))
         return NML_EZERODIV;
     nml_t l = 1.0 / Vec3Length(vec);
-    vOut->x = vec->x * l;
-    vOut->y = vec->y * l;
-    vOut->z = vec->z * l;
+    vOut->X = vec->X * l;
+    vOut->Y = vec->Y * l;
+    vOut->Z = vec->Z * l;
     return NML_SUCCESS;
 }
 
 nml_t Vec3Dot(Vec3 *vec1, Vec3 *vec2) {
-    return (vec1->x * vec2->x + vec1->y * vec2->y + vec1->z * vec2->z);
+    return (vec1->X * vec2->X + vec1->Y * vec2->Y + vec1->Z * vec2->Z);
 }
 
 int Vec3Cross(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
-    vOut->x = (vec1->y * vec2->z) - (vec1->z * vec2->y);
-    vOut->y = (vec1->z * vec2->x) - (vec1->x * vec2->z);
-    vOut->z = (vec1->x * vec2->y) - (vec1->y * vec2->x);
+    vOut->X = (vec1->Y * vec2->Z) - (vec1->Z * vec2->Y);
+    vOut->Y = (vec1->Z * vec2->X) - (vec1->X * vec2->Z);
+    vOut->Z = (vec1->X * vec2->Y) - (vec1->Y * vec2->X);
     return NML_SUCCESS;
 }
 
 int Vec3Add(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
-    vOut->x = vec1->x + vec2->x;
-    vOut->y = vec1->y + vec2->y;
-    vOut->z = vec1->z + vec2->z;
+    vOut->X = vec1->X + vec2->X;
+    vOut->Y = vec1->Y + vec2->Y;
+    vOut->Z = vec1->Z + vec2->Z;
     return NML_SUCCESS;
 }
 
 int Vec3Sub(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
-    vOut->x = vec1->x - vec2->x;
-    vOut->y = vec1->y - vec2->y;
-    vOut->z = vec1->z - vec2->z;
+    vOut->X = vec1->X - vec2->X;
+    vOut->Y = vec1->Y - vec2->Y;
+    vOut->Z = vec1->Z - vec2->Z;
     return NML_SUCCESS;
 }
 
 int Vec3Mul(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
-    vOut->x = vec1->x * vec2->x;
-    vOut->y = vec1->y * vec2->y;
-    vOut->z = vec1->z * vec2->z;
+    vOut->X = vec1->X * vec2->X;
+    vOut->Y = vec1->Y * vec2->Y;
+    vOut->Z = vec1->Z * vec2->Z;
     return NML_SUCCESS;
 }
 
 int Vec3Div(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
-    if (fabs(vec2->x) < kEPSILON || fabs(vec2->y) < kEPSILON ||
-        fabs(vec2->z) < kEPSILON) {
+    if (fabs(vec2->X) < kEPSILON || fabs(vec2->Y) < kEPSILON ||
+        fabs(vec2->Z) < kEPSILON) {
         return NML_EZERODIV;
     }
 
-    vOut->x = vec1->x / vec2->x;
-    vOut->y = vec1->y / vec2->y;
-    vOut->z = vec1->z / vec2->z;
+    vOut->X = vec1->X / vec2->X;
+    vOut->Y = vec1->Y / vec2->Y;
+    vOut->Z = vec1->Z / vec2->Z;
     return NML_SUCCESS;
 }
 
 int Vec3Scale(Vec3 *vec, nml_t s, Vec3 *vOut) {
-    vOut->x = vec->x * s;
-    vOut->y = vec->y * s;
-    vOut->z = vec->z * s;
+    vOut->X = vec->X * s;
+    vOut->Y = vec->Y * s;
+    vOut->Z = vec->Z * s;
     return NML_SUCCESS;
 }
 
 int Vec3Negate(Vec3 *vec, Vec3 *vOut) {
-    vOut->x = -vec->x;
-    vOut->y = -vec->y;
-    vOut->z = -vec->z;
+    vOut->X = -vec->X;
+    vOut->Y = -vec->Y;
+    vOut->Z = -vec->Z;
     return NML_SUCCESS;
 }
 
@@ -95,9 +95,9 @@ int Vec3Project(Vec3 *vec1, Vec3 *vec3, Vec3 *vOut) {
         return NML_EZERODIV;
 
     nml_t scaler = Vec3Dot(vec1, vec3) / lenSqr;
-    vOut->x = vec3->x * scaler;
-    vOut->y = vec3->y * scaler;
-    vOut->z = vec3->z * scaler;
+    vOut->X = vec3->X * scaler;
+    vOut->Y = vec3->Y * scaler;
+    vOut->Z = vec3->Z * scaler;
     return NML_SUCCESS;
 }
 
@@ -109,9 +109,9 @@ int Vec3Reject(Vec3 *vec1, Vec3 *vec3, Vec3 *vOut) {
     nml_t dot = Vec3Dot(vec1, vec3);
     nml_t scaler = dot / lenSqr;
 
-    vOut->x = vec1->x - (scaler * vec3->x);
-    vOut->y = vec1->y - (scaler * vec3->y);
-    vOut->z = vec1->z - (scaler * vec3->z);
+    vOut->X = vec1->X - (scaler * vec3->X);
+    vOut->Y = vec1->Y - (scaler * vec3->Y);
+    vOut->Z = vec1->Z - (scaler * vec3->Z);
     return NML_SUCCESS;
 }
 
@@ -121,8 +121,8 @@ int Vec3Reflect(Vec3 *vec1, Vec3 *vec2, Vec3 *vOut) {
         return NML_EZERODIV;
 
     nml_t scaler = 2.0 * Vec3Dot(vec1, vec2) / lenSqr;
-    vOut->x = vec1->x - scaler * vec2->x;
-    vOut->y = vec1->y - scaler * vec2->y;
-    vOut->z = vec1->z - scaler * vec2->z;
+    vOut->X = vec1->X - scaler * vec2->X;
+    vOut->Y = vec1->Y - scaler * vec2->Y;
+    vOut->Z = vec1->Z - scaler * vec2->Z;
     return NML_SUCCESS;
 }

@@ -6,7 +6,7 @@
 
 typedef union Vec4 {
     struct {
-        nml_t x, y, z, w;
+        nml_t X, Y, Z, W;
     };
     nml_t Elements[4];
 } Vec4;
@@ -44,8 +44,8 @@ int Vec4Reflect(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
  */
 
 static inline bool Vec4IsZero(Vec4 *vec) {
-    return (vec->x * vec->x + vec->y * vec->y + vec->z * vec->z +
-            vec->w * vec->w) < (kEPSILON * kEPSILON);
+    return (vec->X * vec->X + vec->Y * vec->Y + vec->Z * vec->Z +
+            vec->W * vec->W) < (kEPSILON * kEPSILON);
 }
 
 #endif // !__VEC4D_H__

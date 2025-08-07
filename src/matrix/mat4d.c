@@ -298,23 +298,23 @@ int Mat4MulVec4(Mat4 *mat, Vec4 *vec, Vec4 *vOut) {
     return NML_SUCCESS;
 
 #else
-    vOut->x = vec->Elements[0] * mat->Columns[0].x +
-              vec->Elements[1] * mat->Columns[1].x +
-              vec->Elements[2] * mat->Columns[2].x +
-              vec->Elements[3] * mat->Columns[3].x;
-    vOut->y = vec->Elements[0] * mat->Columns[0].y +
-              vec->Elements[1] * mat->Columns[1].y +
-              vec->Elements[2] * mat->Columns[2].y +
-              vec->Elements[3] * mat->Columns[3].y;
-    vOut->z = vec->Elements[0] * mat->Columns[0].z +
-              vec->Elements[1] * mat->Columns[1].z +
-              vec->Elements[2] * mat->Columns[2].z +
-              vec->Elements[3] * mat->Columns[3].z;
+    vOut->X = vec->Elements[0] * mat->Columns[0].X +
+              vec->Elements[1] * mat->Columns[1].X +
+              vec->Elements[2] * mat->Columns[2].X +
+              vec->Elements[3] * mat->Columns[3].X;
+    vOut->Y = vec->Elements[0] * mat->Columns[0].Y +
+              vec->Elements[1] * mat->Columns[1].Y +
+              vec->Elements[2] * mat->Columns[2].Y +
+              vec->Elements[3] * mat->Columns[3].Y;
+    vOut->Z = vec->Elements[0] * mat->Columns[0].Z +
+              vec->Elements[1] * mat->Columns[1].Z +
+              vec->Elements[2] * mat->Columns[2].Z +
+              vec->Elements[3] * mat->Columns[3].Z;
 
-    vOut->w = vec->Elements[0] * mat->Columns[0].w +
-              vec->Elements[1] * mat->Columns[1].w +
-              vec->Elements[2] * mat->Columns[2].w +
-              vec->Elements[3] * mat->Columns[3].w;
+    vOut->W = vec->Elements[0] * mat->Columns[0].W +
+              vec->Elements[1] * mat->Columns[1].W +
+              vec->Elements[2] * mat->Columns[2].W +
+              vec->Elements[3] * mat->Columns[3].W;
 
     return NML_SUCCESS;
 
@@ -324,13 +324,13 @@ int Mat4MulVec4(Mat4 *mat, Vec4 *vec, Vec4 *vOut) {
 int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut) {
     NULL_POINTERS(mat1, mat2, mOut);
 #if defined(USE_SIMD__NEON)
-    float32x4_t mat1_col0 = vld1q_f32(&mat1->Columns[0].x);
-    float32x4_t mat1_col1 = vld1q_f32(&mat1->Columns[1].x);
-    float32x4_t mat1_col2 = vld1q_f32(&mat1->Columns[2].x);
-    float32x4_t mat1_col3 = vld1q_f32(&mat1->Columns[3].x);
+    float32x4_t mat1_col0 = vld1q_f32(&mat1->Columns[0].X);
+    float32x4_t mat1_col1 = vld1q_f32(&mat1->Columns[1].X);
+    float32x4_t mat1_col2 = vld1q_f32(&mat1->Columns[2].X);
+    float32x4_t mat1_col3 = vld1q_f32(&mat1->Columns[3].X);
 
     for (int i = 0; i < 4; i++) {
-        float32x4_t mat2_col = vld1q_f32(&mat2->Columns[i].x);
+        float32x4_t mat2_col = vld1q_f32(&mat2->Columns[i].X);
 
         float32x4_t bc0 = vdupq_n_f32(vgetq_lane_f32(mat2_col, 0));
         float32x4_t bc1 = vdupq_n_f32(vgetq_lane_f32(mat2_col, 1));
@@ -342,19 +342,19 @@ int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut) {
         result = vmlaq_f32(result, mat1_col2, bc2);
         result = vmlaq_f32(result, mat1_col3, bc3);
 
-        vst1q_f32(&mOut->Columns[i].x, result);
+        vst1q_f32(&mOut->Columns[i].X, result);
     }
 
     return NML_SUCCESS;
 
 #elif defined(USE_SIMD__SSE)
-    __m128 mat1_col0 = _mm_load_ps(&mat1->Columns[0].x);
-    __m128 mat1_col1 = _mm_load_ps(&mat1->Columns[1].x);
-    __m128 mat1_col2 = _mm_load_ps(&mat1->Columns[2].x);
-    __m128 mat1_col3 = _mm_load_ps(&mat1->Columns[3].x);
+    __m128 mat1_col0 = _mm_load_ps(&mat1->Columns[0].X);
+    __m128 mat1_col1 = _mm_load_ps(&mat1->Columns[1].X);
+    __m128 mat1_col2 = _mm_load_ps(&mat1->Columns[2].X);
+    __m128 mat1_col3 = _mm_load_ps(&mat1->Columns[3].X);
 
     for (int i = 0; i < 4; i++) {
-        __m128 mat2_col = _mm_load_ps(&mat2->Columns[i].x);
+        __m128 mat2_col = _mm_load_ps(&mat2->Columns[i].X);
 
         __m128 bc0 = _mm_set1_ps(_mm_cvtss_f32(mat2_col));
         __m128 bc1 = _mm_set1_ps(_mm_cvtss_f32(
@@ -369,7 +369,7 @@ int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut) {
         result = _mm_add_ps(result, _mm_mul_ps(mat1_col2, bc2));
         result = _mm_add_ps(result, _mm_mul_ps(mat1_col3, bc3));
 
-        _mm_store_ps(&mOut->Columns[i].x, result);
+        _mm_store_ps(&mOut->Columns[i].X, result);
     }
 
     return NML_SUCCESS;

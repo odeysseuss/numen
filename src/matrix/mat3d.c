@@ -81,12 +81,12 @@ int Mat3Negate(Mat3 *mat, Mat3 *mOut) {
 
 int Mat3MulVec3(Mat3 *mat, Vec3 *vec, Vec3 *vOut) {
     NULL_POINTERS(mat, vec, vOut);
-    vOut->x = mat->Columns[0].x * vec->x + mat->Columns[1].x * vec->y +
-              mat->Columns[2].x * vec->z;
-    vOut->y = mat->Columns[0].y * vec->x + mat->Columns[1].y * vec->y +
-              mat->Columns[2].y * vec->z;
-    vOut->z = mat->Columns[0].z * vec->x + mat->Columns[1].z * vec->y +
-              mat->Columns[2].z * vec->z;
+    vOut->X = mat->Columns[0].X * vec->X + mat->Columns[1].X * vec->Y +
+              mat->Columns[2].X * vec->Z;
+    vOut->Y = mat->Columns[0].Y * vec->X + mat->Columns[1].Y * vec->Y +
+              mat->Columns[2].Y * vec->Z;
+    vOut->Z = mat->Columns[0].Z * vec->X + mat->Columns[1].Z * vec->Y +
+              mat->Columns[2].Z * vec->Z;
 
     return NML_SUCCESS;
 }

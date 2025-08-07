@@ -81,10 +81,10 @@ int Mat2Negate(Mat2 *mat, Mat2 *mOut) {
 
 int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
     NULL_POINTERS(mat, vec, vOut);
-    vOut->x = vec->Elements[0] * mat->Columns[0].x +
-              vec->Elements[1] * mat->Columns[1].x;
-    vOut->y = vec->Elements[0] * mat->Columns[0].y +
-              vec->Elements[1] * mat->Columns[1].y;
+    vOut->X = vec->Elements[0] * mat->Columns[0].X +
+              vec->Elements[1] * mat->Columns[1].X;
+    vOut->Y = vec->Elements[0] * mat->Columns[0].Y +
+              vec->Elements[1] * mat->Columns[1].Y;
 
     return NML_SUCCESS;
 }
