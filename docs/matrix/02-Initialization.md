@@ -13,10 +13,10 @@ int Mat4Init(const nml_t arr[16], Mat4 *mOut);
         - For `Mat2: arr[4]`
         - For `Mat3: arr[9]`
         - For `Mat4: arr[16]`
-    - `mOut`: Output pointer
+    - `mOut`: A matrix populated with the values of the initial array
 
 - ***Return Value***
-    - *A matrix populated with the values of the initial array*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -43,10 +43,10 @@ int Mat4InitZero(Mat4 *mOut);
 ```
 
 - ***Parameters***
-    - `mOut`: Output pointer
+    - `mOut`: A zero initialized matrix
 
 - ***Return Value***
-    - *A zero initialized matrix*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -72,11 +72,11 @@ int Mat4Diagonal(nml_t val, Mat4 *mOut);
 ```
 
 - ***Parameters***
-    - `val`: Value to assign to the diagonal elements
-    - `mOut`: Output pointer
+    - `val` : Value to assign to the diagonal elements
+    - `mOut`: A diagonal matrix with diagonal elements set to `val`
 
 - ***Return Value***
-    - *A diagonal matrix with diagonal elements set to `val`*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -103,10 +103,10 @@ int Mat4Identity(Mat4 *mOut);
 ```
 
 - ***Parameters***
-    - `mOut`: Output pointer
+    - `mOut`: A identity matrix
 
 - ***Return Value***
-    - *A identity matrix*
+    - `int`: Error code
 
 - ***Example***
 ```c

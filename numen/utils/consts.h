@@ -1,13 +1,13 @@
 #ifndef __CONST_H__
 #define __CONST_H__
 
-#ifdef USE_DOUBLE_PRECISION
+#if defined(USE_DOUBLE_PRECISION)
 #define nml_t double
 #define kEPSILON 1e-12
 #else
 #define nml_t float
 #define kEPSILON 1e-6
-#endif // USE_DOUBLE_PRECISION
+#endif
 
 /*
 * +------------------------------+

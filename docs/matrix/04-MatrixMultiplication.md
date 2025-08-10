@@ -12,10 +12,10 @@ int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Parameters***
     - `mat1`: First Matrix Operand
     - `mat2`: Second Matrix Operand
-    - `mOut`: Output Matrix
+    - `mOut`: A new matrix that is the result of Hadamard Product
 
 - ***Return Value***
-    - *A new matrix that is the result of Hadamard Product*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -68,12 +68,12 @@ int Mat4MulMat4(Mat4 *mat, Vec4 *vec, Vec4 *vOut);
 ```
 
 - ***Parameters***
-    - `mat`: Matrix Operand
-    - `vec`: Vector Operand
-    - `vOut`: Output Vector
+    - `mat` : Matrix Operand
+    - `vec` : Vector Operand
+    - `vOut`: A new vector that is the result of Matrix-Vector Multiplication
 
 - ***Return Value***
-    - *A new vector that is the result of Matrix-Vector Multiplication*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -124,10 +124,10 @@ int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Parameters***
     - `mat1`: First Matrix Operand
     - `mat2`: Second Matrix Operand
-    - `mOut`: Output Matrix
+    - `mOut`: A new matrix that is the result of Matrix-Matrix Multiplication
 
 - ***Return Value***
-    - *A new matrix that is the result of Matrix-Matrix Multiplication*
+    - `int`: Error code
 
 - ***Example***
 ```c

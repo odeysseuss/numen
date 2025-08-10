@@ -11,10 +11,10 @@ int Mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Parameters***
     - `mat1`: First matrix operand
     - `mat2`: Second matrix operand
-    - `mOut`: Output pointer
+    - `mOut`: A new matrix that is the result of element-wise addition of mat1 and mat2
 
 - ***Return Value***
-    - *A new matrix that is the result of element-wise addition of mat1 and mat2*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -56,10 +56,10 @@ int Mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Parameters***
     - `mat1`: First matrix operand (minuend)
     - `mat2`: Second matrix operand (subtrahend)
-    - `mOut`: Output pointer
+    - `mOut`: A new matrix that is the result of element-wise subtraction of mat2 from mat1
 
 - ***Return Value***
-    - *A new matrix that is the result of element-wise subtraction of mat2 from mat1*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -104,10 +104,10 @@ int Mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
 - ***Parameters***
     - `mat`: Matrix to be scaled
     - `s`: Scalar value
-    - `mOut`: Output pointer
+    - `mOut`: A new matrix with all elements of mat multiplied by scalar s
 
 - ***Return Value***
-    - *A new matrix with all elements of mat multiplied by scalar s*
+    - `int`: Error code
 
 - ***Example***
 ```c
@@ -148,10 +148,10 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut);
 
 - ***Parameters***
     - `mat`: Matrix to negate
-    - `mOut`: Output pointer
+    - `mOut`: A new matrix with the elements negated
 
 - ***Return Value***
-    - *A new matrix with the elements negated*
+    - `int`: Error code
 
 - ***Example***
 ```c
