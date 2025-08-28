@@ -108,6 +108,36 @@ static TestRegistry test_registry = {NULL, 0};
         }                                                              \
     } while (0)
 
+#define ASSERT_GE(val1, val2)                                          \
+    do {                                                               \
+        if ((val1) <= (val2)) {                                        \
+            fprintf(stderr,                                            \
+                    "[ " COLOR_RED "FAIL" COLOR_RESET                  \
+                    "    ] %s:%d: Expected: %s != %s (both are %d)\n", \
+                    __FILE__,                                          \
+                    __LINE__,                                          \
+                    #val1,                                             \
+                    #val2,                                             \
+                    (val1));                                           \
+            return TEST_FAIL;                                          \
+        }                                                              \
+    } while (0)
+
+#define ASSERT_LE(val1, val2)                                          \
+    do {                                                               \
+        if ((val1) >= (val2)) {                                        \
+            fprintf(stderr,                                            \
+                    "[ " COLOR_RED "FAIL" COLOR_RESET                  \
+                    "    ] %s:%d: Expected: %s != %s (both are %d)\n", \
+                    __FILE__,                                          \
+                    __LINE__,                                          \
+                    #val1,                                             \
+                    #val2,                                             \
+                    (val1));                                           \
+            return TEST_FAIL;                                          \
+        }                                                              \
+    } while (0)
+
 #define ASSERT_FLOAT_EQ(expected, actual)                             \
     do {                                                              \
         float _expected = (expected);                                 \
