@@ -12,9 +12,9 @@ TEST(Mat3Tests, Mat3Init) {
                          0.0, 0.0, 1.0};
     // clang-format on
     Mat3 m;
-    ASSERT_EQ(Mat3Init(test_arr, &m), NML_SUCCESS);
+    ASSERT_EQ(mat3Init(test_arr, &m), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -22,9 +22,9 @@ TEST(Mat3Tests, Mat3Init) {
 TEST(Mat3Tests, Mat3InitZero) {
     nml_t expected[9] = {0};
     Mat3 m;
-    ASSERT_EQ(Mat3InitZero(&m), NML_SUCCESS);
+    ASSERT_EQ(mat3InitZero(&m), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -34,9 +34,9 @@ TEST(Mat3Tests, Mat3Diagonal) {
                          0.0, 5.0, 0.0,
                          0.0, 0.0, 5.0};
     Mat3 m;
-    ASSERT_EQ(Mat3Diagonal(5.0, &m), NML_SUCCESS);
+    ASSERT_EQ(mat3Diagonal(5.0, &m), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -46,9 +46,9 @@ TEST(Mat3Tests, Mat3Identity) {
                          0.0, 1.0, 0.0,
                          0.0, 0.0, 1.0};
     Mat3 m;
-    ASSERT_EQ(Mat3Identity(&m), NML_SUCCESS);
+    ASSERT_EQ(mat3Identity(&m), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -66,12 +66,12 @@ TEST(Mat3Tests, Mat3Add) {
                          10.0, 10.0, 10.0};
     // clang-format on
     Mat3 m1, m2, result;
-    Mat3Init(arr1, &m1);
-    Mat3Init(arr2, &m2);
+    mat3Init(arr1, &m1);
+    mat3Init(arr2, &m2);
 
-    ASSERT_EQ(Mat3Add(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3Add(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -89,12 +89,12 @@ TEST(Mat3Tests, Mat3Sub) {
                          -4.0, 2.0, 8.0};
     // clang-format on
     Mat3 m1, m2, result;
-    Mat3Init(arr1, &m1);
-    Mat3Init(arr2, &m2);
+    mat3Init(arr1, &m1);
+    mat3Init(arr2, &m2);
 
-    ASSERT_EQ(Mat3Sub(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3Sub(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -109,12 +109,12 @@ TEST(Mat3Tests, Mat3Scale) {
                          7.5, 15.0, 22.5};
     // clang-format on
     Mat3 m1, result;
-    Mat3Init(arr1, &m1);
+    mat3Init(arr1, &m1);
     nml_t scale = 2.5;
 
-    ASSERT_EQ(Mat3Scale(&m1, scale, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3Scale(&m1, scale, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -129,11 +129,11 @@ TEST(Mat3Tests, Mat3Negate) {
                          -3.0, -6.0, -9.0};
     // clang-format on
     Mat3 m1, result;
-    Mat3Init(arr1, &m1);
+    mat3Init(arr1, &m1);
 
-    ASSERT_EQ(Mat3Negate(&m1, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3Negate(&m1, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -151,12 +151,12 @@ TEST(Mat3Tests, Mat3Hadamard) {
                          21.0, 24.0, 9.0};
     // clang-format on
     Mat3 m1, m2, result;
-    Mat3Init(arr1, &m1);
-    Mat3Init(arr2, &m2);
+    mat3Init(arr1, &m1);
+    mat3Init(arr2, &m2);
 
-    ASSERT_EQ(Mat3Hadamard(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3Hadamard(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -170,12 +170,12 @@ TEST(Mat3Tests, Mat3MulVec3) {
     // clang-format on
     Mat3 m;
     Vec3 v, result;
-    Mat3Init(mat_arr, &m);
-    Vec3Init(2.0, 3.0, 4.0, &v);
+    mat3Init(mat_arr, &m);
+    vec3Init(2.0, 3.0, 4.0, &v);
 
-    ASSERT_EQ(Mat3MulVec3(&m, &v, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3MulVec3(&m, &v, &result), NML_SUCCESS);
     for (int i = 0; i < 3; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -195,12 +195,12 @@ TEST(Mat3Tests, Mat3MulMat3) {
                          18.0, 54.0, 90.0};  // Column 2
     // clang-format on
     Mat3 m1, m2, result;
-    Mat3Init(arr1, &m1);
-    Mat3Init(arr2, &m2);
+    mat3Init(arr1, &m1);
+    mat3Init(arr2, &m2);
 
-    ASSERT_EQ(Mat3MulMat3(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat3MulMat3(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 9; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }

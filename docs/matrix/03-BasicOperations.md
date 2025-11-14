@@ -3,9 +3,9 @@
 #### Matrix Addition
 - ***Reference***
 ```c
-int Mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat3Add(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
+int mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat3Add(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
+int mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -19,9 +19,9 @@ int Mat4Add(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Example***
 ```c
 Mat2 mat1, mat2, result;
-Mat2Identity(&mat1);
-Mat2Diagonal(2.0, &mat2);
-Mat2Add(&mat1, &mat2, &result);
+mat2Identity(&mat1);
+mat2Diagonal(2.0, &mat2);
+mat2Add(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
@@ -48,9 +48,9 @@ Mat2Add(&mat1, &mat2, &result);
 #### Matrix Subtraction
 - ***Reference***
 ```c
-int Mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat3Sub(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
+int mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat3Sub(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
+int mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -64,9 +64,9 @@ int Mat4Sub(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 - ***Example***
 ```c
 Mat3 mat1, mat2, result;
-Mat3Diagonal(5.0, &mat1);
-Mat3Identity(&mat2);
-Mat3Sub(&mat1, &mat2, &result);
+mat3Diagonal(5.0, &mat1);
+mat3Identity(&mat2);
+mat3Sub(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
@@ -96,9 +96,9 @@ Mat3Sub(&mat1, &mat2, &result);
 #### Matrix Scaling
 - ***Reference***
 ```c
-int Mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut);
-int Mat3Scale(Mat3 *mat, nml_t s, Mat3 *mOut);
-int Mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
+int mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut);
+int mat3Scale(Mat3 *mat, nml_t s, Mat3 *mOut);
+int mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -112,8 +112,8 @@ int Mat4Scale(Mat4 *mat, nml_t s, Mat4 *mOut);
 - ***Example***
 ```c
 Mat4 mat, scaled;
-Mat4Identity(&mat);
-Mat4Scale(mat, 3.0, &scaled);
+mat4Identity(&mat);
+mat4Scale(mat, 3.0, &scaled);
 ```
 
 - ***Representation***
@@ -141,9 +141,9 @@ Mat4Scale(mat, 3.0, &scaled);
 
 - ***Reference***
 ```c
-int Mat2Negate(Mat2 *mat, Mat2 *mOut);
-int Mat3Negate(Mat3 *mat, Mat3 *mOut);
-int Mat4Negate(Mat4 *mat, Mat4 *mOut);
+int mat2Negate(Mat2 *mat, Mat2 *mOut);
+int mat3Negate(Mat3 *mat, Mat3 *mOut);
+int mat4Negate(Mat4 *mat, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -157,8 +157,8 @@ int Mat4Negate(Mat4 *mat, Mat4 *mOut);
 ```c
 nml_t arr[4] = { 1, 3, 2, 4 };
 Mat2 mat, result;
-Mat2Init(arr, &mat);
-Mat2Negate(&mat, &result);
+mat2Init(arr, &mat);
+mat2Negate(&mat, &result);
 ```
 
 - ***Representation***

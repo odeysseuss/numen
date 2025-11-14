@@ -6,46 +6,46 @@
 
 typedef union Vec4 {
     struct {
-        nml_t X, Y, Z, W;
+        nml_t x, y, z, w;
     };
-    nml_t Elements[4];
+    nml_t elems[4];
 } Vec4;
 
 // initialize a vector with all the elements set to 0.0f
-int Vec4InitZero(Vec4 *vOut);
-int Vec4Init(nml_t x, nml_t y, nml_t z, nml_t w, Vec4 *vOut);
+int vec4InitZero(Vec4 *vOut);
+int vec4Init(nml_t x, nml_t y, nml_t z, nml_t w, Vec4 *vOut);
 
-nml_t Vec4Length(Vec4 *vec);
-nml_t Vec4LengthSqr(Vec4 *vec);
-int Vec4Normalize(Vec4 *vec, Vec4 *vOut);
+nml_t vec4Length(Vec4 *vec);
+nml_t vec4LengthSqr(Vec4 *vec);
+int vec4Normalize(Vec4 *vec, Vec4 *vOut);
 
-int Vec4Add(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Add(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 // subtract vec2 form vec1
-int Vec4Sub(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
-int Vec4Mul(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Sub(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Mul(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 // divide vec1 by vec2
-int Vec4Div(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Div(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 
-nml_t Vec4Dot(Vec4 *vec1, Vec4 *vec2);
-int Vec4Cross(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+nml_t vec4Dot(Vec4 *vec1, Vec4 *vec2);
+int vec4Cross(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 
-int Vec4Scale(Vec4 *vec, nml_t s, Vec4 *vOut);
-int Vec4Negate(Vec4 *vec, Vec4 *vOut);
+int vec4Scale(Vec4 *vec, nml_t s, Vec4 *vOut);
+int vec4Negate(Vec4 *vec, Vec4 *vOut);
 
 // projection of vec1 on vec2
-int Vec4Project(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Project(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 // rejection of vec1 from vec2
-int Vec4Reject(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Reject(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 // reflection of vec1 from vec2
-int Vec4Reflect(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
+int vec4Reflect(Vec4 *vec1, Vec4 *vec2, Vec4 *vOut);
 
 /*
  * vector utilities
  */
 
-static inline bool Vec4IsZero(Vec4 *vec) {
-    return (vec->X * vec->X + vec->Y * vec->Y + vec->Z * vec->Z +
-            vec->W * vec->W) < (kEPSILON * kEPSILON);
+static inline bool vec4IsZero(Vec4 *vec) {
+    return (vec->x * vec->x + vec->y * vec->y + vec->z * vec->z + vec->w * vec->w) <
+           (kEPSILON * kEPSILON);
 }
 
 #endif // !__VEC4D_H__

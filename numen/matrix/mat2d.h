@@ -5,27 +5,27 @@
 #include "vector/vec2d.h"
 
 typedef union Mat2 {
-    nml_t Elements[4];
-    Vec2 Columns[2];
+    nml_t elems[4];
+    Vec2 cols[2];
 } Mat2;
 
-int Mat2Init(const nml_t arr[4], Mat2 *mOut);
-int Mat2InitZero(Mat2 *mOut);
+int mat2Init(const nml_t arr[4], Mat2 *mOut);
+int mat2InitZero(Mat2 *mOut);
 // initialize a diagonal matrix
-int Mat2Diagonal(nml_t val, Mat2 *mOut);
+int mat2Diagonal(nml_t val, Mat2 *mOut);
 // initialize a identity matrix
-int Mat2Identity(Mat2 *mOut);
+int mat2Identity(Mat2 *mOut);
 
-int Mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
 // subtract mat2 form mat1
-int Mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
 
-int Mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut);
-int Mat2Negate(Mat2 *mat, Mat2 *mOut);
+int mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut);
+int mat2Negate(Mat2 *mat, Mat2 *mOut);
 
 // matrix multiplication
-int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut);
-int Mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut);
+int mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
 
 #endif // !__MAT2D_H__

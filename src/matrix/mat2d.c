@@ -2,97 +2,97 @@
 #include "utils/errors.h"
 #include <string.h>
 
-int Mat2Init(const nml_t arr[4], Mat2 *mOut) {
+int mat2Init(const nml_t arr[4], Mat2 *mOut) {
     NULL_POINTERS(mOut);
-    memcpy(mOut->Elements, arr, sizeof(nml_t) * 4);
+    memcpy(mOut->elems, arr, sizeof(nml_t) * 4);
     return NML_SUCCESS;
 }
 
-int Mat2InitZero(Mat2 *mOut) {
+int mat2InitZero(Mat2 *mOut) {
     NULL_POINTERS(mOut);
     memset(mOut, 0, sizeof(Mat2));
     return NML_SUCCESS;
 }
 
-int Mat2Diagonal(nml_t val, Mat2 *mOut) {
+int mat2Diagonal(nml_t val, Mat2 *mOut) {
     NULL_POINTERS(mOut);
-    memset(mOut->Elements, 0, sizeof(Mat2));
+    memset(mOut->elems, 0, sizeof(Mat2));
     for (int i = 0; i < 2; i++) {
-        mOut->Elements[i * 2 + i] = val;
+        mOut->elems[i * 2 + i] = val;
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Identity(Mat2 *mOut) {
+int mat2Identity(Mat2 *mOut) {
     NULL_POINTERS(mOut);
-    memset(mOut->Elements, 0, sizeof(Mat2));
+    memset(mOut->elems, 0, sizeof(Mat2));
     for (int i = 0; i < 2; i++) {
-        mOut->Elements[i * 2 + i] = 1.0;
+        mOut->elems[i * 2 + i] = 1.0;
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+int mat2Add(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
     NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = mat1->Elements[i] + mat2->Elements[i];
+        mOut->elems[i] = mat1->elems[i] + mat2->elems[i];
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+int mat2Sub(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
     NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = mat1->Elements[i] - mat2->Elements[i];
+        mOut->elems[i] = mat1->elems[i] - mat2->elems[i];
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+int mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
     NULL_POINTERS(mat1, mat2, mOut);
     for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = mat1->Elements[i] * mat2->Elements[i];
+        mOut->elems[i] = mat1->elems[i] * mat2->elems[i];
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut) {
+int mat2Scale(Mat2 *mat, nml_t s, Mat2 *mOut) {
     NULL_POINTERS(mat, mOut);
     for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = mat->Elements[i] * s;
+        mOut->elems[i] = mat->elems[i] * s;
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2Negate(Mat2 *mat, Mat2 *mOut) {
+int mat2Negate(Mat2 *mat, Mat2 *mOut) {
     NULL_POINTERS(mat, mOut);
     for (int i = 0; i < 4; i++) {
-        mOut->Elements[i] = -mat->Elements[i];
+        mOut->elems[i] = -mat->elems[i];
     }
 
     return NML_SUCCESS;
 }
 
-int Mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
+int mat2MulVec2(Mat2 *mat, Vec2 *vec, Vec2 *vOut) {
     NULL_POINTERS(mat, vec, vOut);
-    vOut->X = vec->Elements[0] * mat->Columns[0].X +
-              vec->Elements[1] * mat->Columns[1].X;
-    vOut->Y = vec->Elements[0] * mat->Columns[0].Y +
-              vec->Elements[1] * mat->Columns[1].Y;
+    vOut->x = vec->elems[0] * mat->cols[0].x +
+              vec->elems[1] * mat->cols[1].x;
+    vOut->y = vec->elems[0] * mat->cols[0].y +
+              vec->elems[1] * mat->cols[1].y;
 
     return NML_SUCCESS;
 }
 
-int Mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
+int mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut) {
     NULL_POINTERS(mat1, mat2, mOut);
-    Mat2MulVec2(mat1, &mat2->Columns[0], &mOut->Columns[0]);
-    Mat2MulVec2(mat1, &mat2->Columns[1], &mOut->Columns[1]);
+    mat2MulVec2(mat1, &mat2->cols[0], &mOut->cols[0]);
+    mat2MulVec2(mat1, &mat2->cols[1], &mOut->cols[1]);
 
     return NML_SUCCESS;
 }

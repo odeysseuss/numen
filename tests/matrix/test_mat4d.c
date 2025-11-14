@@ -14,9 +14,9 @@ TEST(Mat4Tests, Mat4Init) {
                           0.0, 0.0, 0.0, 1.0};
     // clang-format on
     Mat4 m;
-    ASSERT_EQ(Mat4Init(test_arr, &m), NML_SUCCESS);
+    ASSERT_EQ(mat4Init(test_arr, &m), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -24,9 +24,9 @@ TEST(Mat4Tests, Mat4Init) {
 TEST(Mat4Tests, Mat4InitZero) {
     nml_t expected[16] = {0};
     Mat4 m;
-    ASSERT_EQ(Mat4InitZero(&m), NML_SUCCESS);
+    ASSERT_EQ(mat4InitZero(&m), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -39,9 +39,9 @@ TEST(Mat4Tests, Mat4Diagonal) {
                           0.0, 0.0, 0.0, 5.0};
     // clang-format on
     Mat4 m;
-    ASSERT_EQ(Mat4Diagonal(5.0, &m), NML_SUCCESS);
+    ASSERT_EQ(mat4Diagonal(5.0, &m), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -54,9 +54,9 @@ TEST(Mat4Tests, Mat4Identity) {
                           0.0, 0.0, 0.0, 1.0};
     // clang-format on
     Mat4 m;
-    ASSERT_EQ(Mat4Identity(&m), NML_SUCCESS);
+    ASSERT_EQ(mat4Identity(&m), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(m.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(m.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -77,12 +77,12 @@ TEST(Mat4Tests, Mat4Add) {
                           17.0, 17.0, 17.0, 17.0};
     // clang-format on
     Mat4 m1, m2, result;
-    Mat4Init(arr1, &m1);
-    Mat4Init(arr2, &m2);
+    mat4Init(arr1, &m1);
+    mat4Init(arr2, &m2);
 
-    ASSERT_EQ(Mat4Add(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4Add(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -103,12 +103,12 @@ TEST(Mat4Tests, Mat4Sub) {
                           -9.0, -1.0, 7.0, 15.0};
     // clang-format on
     Mat4 m1, m2, result;
-    Mat4Init(arr1, &m1);
-    Mat4Init(arr2, &m2);
+    mat4Init(arr1, &m1);
+    mat4Init(arr2, &m2);
 
-    ASSERT_EQ(Mat4Sub(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4Sub(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -125,12 +125,12 @@ TEST(Mat4Tests, Mat4Scale) {
                           10.0, 20.0, 30.0, 40.0};
     // clang-format on
     Mat4 m1, result;
-    Mat4Init(arr1, &m1);
+    mat4Init(arr1, &m1);
     nml_t scale = 2.5;
 
-    ASSERT_EQ(Mat4Scale(&m1, scale, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4Scale(&m1, scale, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -147,11 +147,11 @@ TEST(Mat4Tests, Mat4Negate) {
                           -4.0, -8.0, -12.0, -16.0};
     // clang-format on
     Mat4 m1, result;
-    Mat4Init(arr1, &m1);
+    mat4Init(arr1, &m1);
 
-    ASSERT_EQ(Mat4Negate(&m1, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4Negate(&m1, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -172,12 +172,12 @@ TEST(Mat4Tests, Mat4Hadamard) {
                           52.0, 72.0, 60.0, 16.0};
     // clang-format on
     Mat4 m1, m2, result;
-    Mat4Init(arr1, &m1);
-    Mat4Init(arr2, &m2);
+    mat4Init(arr1, &m1);
+    mat4Init(arr2, &m2);
 
-    ASSERT_EQ(Mat4Hadamard(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4Hadamard(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -192,12 +192,12 @@ TEST(Mat4Tests, Mat4MulVec4) {
     // clang-format on
     Mat4 m;
     Vec4 v, result;
-    Mat4Init(mat_arr, &m);
-    Vec4Init(1.0, 2.0, 3.0, 4.0, &v);
+    mat4Init(mat_arr, &m);
+    vec4Init(1.0, 2.0, 3.0, 4.0, &v);
 
-    ASSERT_EQ(Mat4MulVec4(&m, &v, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4MulVec4(&m, &v, &result), NML_SUCCESS);
     for (int i = 0; i < 4; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }
@@ -218,12 +218,12 @@ TEST(Mat4Tests, Mat4MulMat4) {
                           50.0, 162.0, 274.0, 386.0};
     // clang-format on
     Mat4 m1, m2, result;
-    Mat4Init(arr1, &m1);
-    Mat4Init(arr2, &m2);
+    mat4Init(arr1, &m1);
+    mat4Init(arr2, &m2);
 
-    ASSERT_EQ(Mat4MulMat4(&m1, &m2, &result), NML_SUCCESS);
+    ASSERT_EQ(mat4MulMat4(&m1, &m2, &result), NML_SUCCESS);
     for (int i = 0; i < 16; i++) {
-        ASSERT_DOUBLE_EQ(result.Elements[i], expected[i]);
+        ASSERT_DOUBLE_EQ(result.elems[i], expected[i]);
     }
     return TEST_PASS;
 }

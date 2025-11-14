@@ -4,9 +4,9 @@
 
 - ***Reference***
 ```c
-int Mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
+int mat2Hadamard(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat3Hadamard(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
+int mat4Hadamard(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -29,9 +29,9 @@ nml_t expected[9] = {9.0, 24.0, 21.0,
                      16.0, 25.0, 16.0,
                      21.0, 24.0, 9.0};
 Mat mat2, mat2, result;
-Mat2Init(arr, &A);
-Mat2Init(arr, &B);
-Mat2Hadamard(&A, &B, &result);
+mat2Init(arr, &A);
+mat2Init(arr, &B);
+mat2Hadamard(&A, &B, &result);
 ```
 
 - ***Representation***
@@ -62,9 +62,9 @@ Mat2Hadamard(&A, &B, &result);
 
 - ***Reference***
 ```c
-int Mat2MulMat2(Mat2 *mat, Vec2 *vec, Vec2 *vOut);
-int Mat3MulMat3(Mat3 *mat, Vec3 *vec, Vec3 *vOut);
-int Mat4MulMat4(Mat4 *mat, Vec4 *vec, Vec4 *vOut);
+int mat2MulMat2(Mat2 *mat, Vec2 *vec, Vec2 *vOut);
+int mat3MulMat3(Mat3 *mat, Vec3 *vec, Vec3 *vOut);
+int mat4MulMat4(Mat4 *mat, Vec4 *vec, Vec4 *vOut);
 ```
 
 - ***Parameters***
@@ -83,9 +83,9 @@ nml_t mat_arr[9] = {1.0, 4.0, 7.0,
 
 Mat3 mat;
 Vec3 vec, result;
-Mat3Init(mat_arr, &mat);
-Vec3Init(2.0, 3.0, 4.0, &vec);
-Mat3MulVec3(&mat, &vec, &result);
+mat3Init(mat_arr, &mat);
+vec3Init(2.0, 3.0, 4.0, &vec);
+mat3MulVec3(&mat, &vec, &result);
 ```
 
 - ***Representation***
@@ -116,9 +116,9 @@ Mat3MulVec3(&mat, &vec, &result);
 
 - ***Reference***
 ```c
-int Mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
-int Mat3MulMat3(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
-int Mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
+int mat2MulMat2(Mat2 *mat1, Mat2 *mat2, Mat2 *mOut);
+int mat3MulMat3(Mat3 *mat1, Mat3 *mat2, Mat3 *mOut);
+int mat4MulMat4(Mat4 *mat1, Mat4 *mat2, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -136,9 +136,9 @@ nml_t arr1[4] = {1.0, 3.0,
 nml_t arr2[4] = {4.0, 2.0,
                  3.0, 1.0};
 Mat mat1, mat2, result;
-Mat2Init(arr, &mat1);
-Mat2Init(arr, &mat2);
-Mat2Hadamard(&mat1, &mat2, &result);
+mat2Init(arr, &mat1);
+mat2Init(arr, &mat2);
+mat2Hadamard(&mat1, &mat2, &result);
 ```
 
 - ***Representation***

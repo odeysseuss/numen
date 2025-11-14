@@ -3,9 +3,9 @@
 #### Initialize from a 2d Array (Column-Major)
 - ***Reference***
 ```c
-int Mat2Init(const nml_t arr[4], Mat2 *mOut);
-int Mat3Init(const nml_t arr[9], Mat3 *mOut);
-int Mat4Init(const nml_t arr[16], Mat4 *mOut);
+int mat2Init(const nml_t arr[4], Mat2 *mOut);
+int mat3Init(const nml_t arr[9], Mat3 *mOut);
+int mat4Init(const nml_t arr[16], Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -23,7 +23,7 @@ int Mat4Init(const nml_t arr[16], Mat4 *mOut);
 nml_t array[4] = { 1.0, 3,0
                    2.0, 4.0 };
 Mat2 A;
-Mat2Init(array, &A);
+mat2Init(array, &A);
 ```
 
 - ***Representation***
@@ -37,9 +37,9 @@ Mat2Init(array, &A);
 #### Initialize a Zero matrix
 - ***Reference***
 ```c
-int Mat2InitZero(Mat2 *mOut);
-int Mat3InitZero(Mat3 *mOut);
-int Mat4InitZero(Mat4 *mOut);
+int mat2InitZero(Mat2 *mOut);
+int mat3InitZero(Mat3 *mOut);
+int mat4InitZero(Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -51,7 +51,7 @@ int Mat4InitZero(Mat4 *mOut);
 - ***Example***
 ```c
 Mat3 A;
-Mat2InitZero(Mat3 *mOut);
+mat2InitZero(Mat3 *mOut);
 ```
 
 - ***Representation***
@@ -66,9 +66,9 @@ Mat2InitZero(Mat3 *mOut);
 #### Initialize a Diagonal Matrix
 - ***Reference***
 ```c
-int Mat2Diagonal(nml_t val, Mat2 *mOut);
-int Mat3Diagonal(nml_t val, Mat3 *mOut);
-int Mat4Diagonal(nml_t val, Mat4 *mOut);
+int mat2Diagonal(nml_t val, Mat2 *mOut);
+int mat3Diagonal(nml_t val, Mat3 *mOut);
+int mat4Diagonal(nml_t val, Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -81,7 +81,7 @@ int Mat4Diagonal(nml_t val, Mat4 *mOut);
 - ***Example***
 ```c
 Mat4 A;
-Mat4Diagonal(5.0, &A);
+mat4Diagonal(5.0, &A);
 ```
 
 - ***Representation***
@@ -97,9 +97,9 @@ Mat4Diagonal(5.0, &A);
 #### Initialize a Identity Matrix
 - ***Reference***
 ```c
-int Mat2Identity(Mat2 *mOut);
-int Mat3Identity(Mat3 *mOut);
-int Mat4Identity(Mat4 *mOut);
+int mat2Identity(Mat2 *mOut);
+int mat3Identity(Mat3 *mOut);
+int mat4Identity(Mat4 *mOut);
 ```
 
 - ***Parameters***
@@ -111,7 +111,7 @@ int Mat4Identity(Mat4 *mOut);
 - ***Example***
 ```c
 Mat2 A;
-Mat2Identity(&A);
+mat2Identity(&A);
 ```
 
 - ***Representation***
