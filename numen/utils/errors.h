@@ -15,7 +15,7 @@ enum {
     NML_ENULLMEM = 9, // null pointer
 };
 
-#define NULL_POINTERS(...)                                        \
+#define is_null(...)                                        \
     do {                                                          \
         void *_pointers[] = {__VA_ARGS__};                        \
         size_t _count = sizeof(_pointers) / sizeof(_pointers[0]); \
