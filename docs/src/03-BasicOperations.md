@@ -25,10 +25,11 @@ mat2Add(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{mat1}+\text{mat2}=\text{result}
-```
-```math
+\\]
+
+\\[
 \begin{bmatrix}
 1 & 0 \\
 0 & 1
@@ -43,7 +44,7 @@ mat2Add(&mat1, &mat2, &result);
 3 & 0 \\
 0 & 3
 \end{bmatrix}
-```
+\\]
 
 #### Matrix Subtraction
 - ***Reference***
@@ -70,10 +71,11 @@ mat3Sub(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{mat1}-\text{mat2}=\text{result}
-```
-```math
+\\]
+
+\\[
 \begin{bmatrix}
 5 & 0 & 0 \\
 0 & 5 & 0 \\
@@ -91,7 +93,7 @@ mat3Sub(&mat1, &mat2, &result);
 0 & 4 & 0 \\
 0 & 0 & 4
 \end{bmatrix}
-```
+\\]
 
 #### Matrix Scaling
 - ***Reference***
@@ -117,10 +119,11 @@ mat4Scale(mat, 3.0, &scaled);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{s}\cdot\text{mat}=\text{result}
-```
-```math
+\\]
+
+\\[
 \text{3.0} \quad \cdot \quad
 \begin{bmatrix}
 1 & 0 & 0 & 0 \\
@@ -135,7 +138,7 @@ mat4Scale(mat, 3.0, &scaled);
 0 & 0 & 3 & 0 \\
 0 & 0 & 0 & 3
 \end{bmatrix}
-```
+\\]
 
 #### Matrix negation
 
@@ -162,10 +165,11 @@ mat2Negate(&mat, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{-} \text{mat} \quad = \quad \text{result}
-```
-```math
+\\]
+
+\\[
 \text{-}
 \begin{bmatrix}
 1 & 2 \\
@@ -176,4 +180,4 @@ mat2Negate(&mat, &result);
 -1 & -2 \\
 -3 & -4
 \end{bmatrix} \quad
-```
+\\]

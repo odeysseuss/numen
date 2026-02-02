@@ -27,12 +27,12 @@ mat2Init(array, &A);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{A} = \begin{bmatrix}
 1.0 & 2.0 \\
 3.0 & 4.0
 \end{bmatrix}
-```
+\\]
 
 #### Initialize a Zero matrix
 - ***Reference***
@@ -55,13 +55,13 @@ mat2InitZero(Mat3 *mOut);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{A} = \begin{bmatrix}
 0 & 0 & 0 \\
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{bmatrix}
-```
+\\]
 
 #### Initialize a Diagonal Matrix
 - ***Reference***
@@ -85,14 +85,14 @@ mat4Diagonal(5.0, &A);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{A} = \begin{bmatrix}
 5.0 & 0 & 0 & 0 \\
 0 & 5.0 & 0 & 0 \\
 0 & 0 & 5.0 & 0 \\
 0 & 0 & 0 & 5.0
 \end{bmatrix}
-```
+\\]
 
 #### Initialize a Identity Matrix
 - ***Reference***
@@ -115,9 +115,9 @@ mat2Identity(&A);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{A} = \begin{bmatrix}
 1 & 0 \\
 0 & 1
 \end{bmatrix}
-```
+\\]

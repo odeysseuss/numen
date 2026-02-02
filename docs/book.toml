@@ -1,0 +1,6 @@
+[book]
+title = "Numen - SIMD optimized math library"
+authors = ["robin"]
+language = "en"
+[output.html]
+mathjax-support = true

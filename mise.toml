@@ -1,0 +1,3 @@
+[tools]
+"cargo:mdbook" = "latest"
+rust = "latest"

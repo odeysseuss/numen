@@ -35,10 +35,11 @@ mat2Hadamard(&A, &B, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{mat1}\odot\text{mat2}=\text{result}
-```
-```math
+\\]
+
+\\[
 \begin{bmatrix}
 1.0 & 4.0 & 7.0 \\
 2.0 & 5.0 & 8.0 \\
@@ -56,7 +57,7 @@ mat2Hadamard(&A, &B, &result);
 16.0 & 25.0 & 16.0 \\
 21.0 & 24.0 & 9.0
 \end{bmatrix} \quad
-```
+\\]
 
 #### Matrix-Vector Multiplication
 
@@ -89,10 +90,11 @@ mat3MulVec3(&mat, &vec, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{mat}\cdot\text{vec}=\text{result}
-```
-```math
+\\]
+
+\\[
 \begin{bmatrix}
 1.0 & 4.0 & 7.0 \\
 2.0 & 5.0 & 8.0 \\
@@ -110,7 +112,7 @@ mat3MulVec3(&mat, &vec, &result);
 47.0 \\
 74.0
 \end{pmatrix} \quad
-```
+\\]
 
 #### Matrix-Matrix Multiplication
 
@@ -142,10 +144,11 @@ mat2Hadamard(&mat1, &mat2, &result);
 ```
 
 - ***Representation***
-```math
+\\[
 \text{mat}\cdot\text{vec}=\text{result}
-```
-```math
+\\]
+
+\\[
 \begin{bmatrix}
 1.0 & 3.0 \\
 2.0 & 4.0
@@ -160,4 +163,4 @@ mat2Hadamard(&mat1, &mat2, &result);
 8.0 & 20.0 \\
 5.0 & 13.0
 \end{bmatrix} \quad
-```
+\\]
